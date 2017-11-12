@@ -58,7 +58,7 @@ header{
 /*estilo titulo*/
 h1{
 	color: #fff;
-	padding-left: 50px;
+	padding-left: 20px;
 }
 
 /*seccion formulario*/
@@ -199,7 +199,7 @@ input:hover{
 /* para darle estilo al div creado */
 .listaEstilo{
 	padding-left: 10px;
-	padding:1px;
+	padding:8px;
 	background-color: #4D394B;
 	color:#fff;
 	-webkit-border-radius:5px;
@@ -209,10 +209,16 @@ input:hover{
     vertical-align: top;
     margin-left: 10px;
     height: auto;
+    size: 1.5em;
 }
 
-.listaEstilo p{
+.listaEstilo #tituloList{
 	padding-left: 10px;
+	font-weight: bold;
+	font-size: 1.5em;
+	margin:0;
+	padding:10px;
+	
 }
 
 
@@ -228,3 +234,19 @@ input:hover{
 	font-family: 'Source Sans Pro', sans-serif;
 	padding-bottom: 5px;
 }
+
+
+
+.area{
+	border:none;
+	width: 340px;
+	-webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    padding: 4px;
+    font-family: 'Source Sans Pro', sans-serif;
+    height: auto;
+    opacity: 0.5;
+}
+
+
+

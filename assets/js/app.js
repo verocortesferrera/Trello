@@ -6,7 +6,8 @@ var divBotones = document.getElementById("buttons");
 
 var lista = document.getElementById('lista');
 //variable vacia que recibe link añadir lista
-addLista = '';
+addLista = "";
+var newContenedorLista = "";
 
 //creo una funcion que al hacer clic en mi contenedor formulario cambie:
 lista.addEventListener("click", function(){
@@ -82,11 +83,32 @@ save.addEventListener("click", function(){
 
 	//agrego div creado al div HTML
 	agreeList.appendChild(newContenedorLista);
+
+
+
+	//para crear evento añadir intente hacerlo afuera de esta funcion
+	addLista.addEventListener('click', function(){
+	//hacer desaparecer el add lista
+	addLista.classList.add('hidden');
+
+	//crear input tex area al hacer click
+	var textarea = document.createElement('textarea');
+	textarea.classList.add('class', 'area');
+
+	//añadir un boton
+	var añadir = document.createElement('button');
+	var añadirTexto = document.createTextNode('Añadir');
+
+	newContenedorLista.appendChild(textarea);
+	añadir.appendChild(añadirTexto);
+	newContenedorLista.appendChild(añadir);
+
+
+})
+
 	
-
-	//añadir evento textarea
-
-
-	
+		
 });
+
+
 
