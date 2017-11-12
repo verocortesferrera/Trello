@@ -26,6 +26,9 @@ close.addEventListener("click", function(){
 	contenedorBox.classList.remove("after");
 	//agrego la clase que tenia antes hidden
 	divBotones.classList.add("hidden");
+
+	 //limpio mi lista
+	document.getElementById('lista').value = "";
 });
 
 
@@ -44,21 +47,18 @@ save.addEventListener("click", function(){
 	 document.getElementById('lista').value = "";
 
 	
+	
 	 //creo div donde ira la lista
 	 var newContenedorLista = document.createElement('div');
 	 //creo elemento p para meter la lista
 	var newLista = document.createElement('p');
 	newLista.setAttribute('id', 'tituloList');
 	//nodo de texto lista ingresada
+
+	
+
 	var textoListaElement = document.createTextNode(lista);
 
-
-	//si el input esta vacio no dejar hacer la lista
-	if(lista.length == 0 || lista == null) { // si no hay nada
-			//desabilita el boton
-		save.disabled = true;// para que se corte ahi la condicion sino sera true y se crea la condicion
-	} 
-	else{}
 
 	//creo un enlace para añadir mas listas
 	var addLista = document.createElement('a');
@@ -88,27 +88,64 @@ save.addEventListener("click", function(){
 
 	//para crear evento añadir intente hacerlo afuera de esta funcion
 	addLista.addEventListener('click', function(){
-	//hacer desaparecer el add lista
-	addLista.classList.add('hidden');
+		//hacer desaparecer el add lista
+		addLista.classList.add('hidden');
 
-	//crear input tex area al hacer click
-	var textarea = document.createElement('textarea');
-	textarea.classList.add('class', 'area');
+		//crear input tex area al hacer click
+		var textarea = document.createElement('textarea');
+		textarea.classList.add('class', 'area');
 
-	//añadir un boton
-	var añadir = document.createElement('button');
-	var añadirTexto = document.createTextNode('Añadir');
+		//añadir un boton
+		var añadir = document.createElement('button');
+		var añadirTexto = document.createTextNode('Añadir');
 
-	newContenedorLista.appendChild(textarea);
-	añadir.appendChild(añadirTexto);
-	newContenedorLista.appendChild(añadir);
+		newContenedorLista.appendChild(textarea);
+		añadir.appendChild(añadirTexto);
+		newContenedorLista.appendChild(añadir);
+
+		
+
+		//funcion al boton añadir
+		añadir.addEventListener('click', function(){
+			//introducir input del textarea
+			var littleList = textarea.value;
+			//limpiar input
+			textarea.value = "";
+
+			//si el input esta vacio no dejar hacer la lista
+			if(littleList.length == 0 || littleList == null) { // si no hay nada
+				//desabilita el boton
+				añadir.disabled = true;// para que se corte ahi la condicion sino sera true y se crea la condicion
+			} 
+			else{}
+
+			//generar un elemento p
+			var newLittleList = document.createElement('p');
+			newLittleList.setAttribute('class','fondo');
+			//crear nodo para input
+			var newLittleListContent = document.createTextNode(littleList);
+
+			//unir
+			newLittleList.appendChild(newLittleListContent);
+			//contenedor padre insertar antes de textarea
+			newContenedorLista.insertBefore(newLittleList, textarea);
+
+		})
+
+	})
 
 
-})
-
-	
 		
 });
 
+var inputText = document.getElementsByTagName('input');
+//para bloquear boton si esta vacio
+inputText.onkeyup = function(){
 
-
+//si el input esta vacio no dejar hacer la lista
+	if(inputText.length == 0 || inputText == null) { // si no hay nada
+			//desabilita el boton
+		 save.disabled = true;// para que se corte ahi la condicion sino sera true y se crea la condicion
+	} 
+	else{}
+};
